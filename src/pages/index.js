@@ -1,118 +1,136 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
+import React, { useState, useEffect, useRef } from "react";
+import { Montserrat } from "next/font/google";
+import "@fontsource/ysabeau-infant";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { TypeAnimation } from 'react-type-animation';
+import { Link, animateScroll as scroll } from "react-scroll";
 
-const inter = Inter({ subsets: ["latin"] });
+const montserrat = Montserrat({ subsets: ["latin"] });
 
 export default function Home() {
+  const [selectedNavItem, setSelectedNavItem] = useState(0);
+  const [showNav, setShowNav] = useState(false);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [showNavButton, setShowNavButton] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const sectionRefs = useRef([]);
+
+  const handleMouseScroll = (index) => {
+    scroll.scrollTo(sectionRefs.current[index].offsetTop, {
+      smooth: true,
+    });
+    setCurrentIndex(index);
+    setShowNav(false);
+  };
+
+  const handleScroll = () => {
+    setScrollPosition(window.scrollY);
+    if (window.scrollY > 50) {
+      setShowNavButton(true);
+    } else {
+      setShowNavButton(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleNavItemClick = (index) => {
+    handleMouseScroll(index);
+  };
+
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/pages/index.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+      <div className={`fixed top-0 left-0 h-screen flex gap-0 items-strech z-50 ${!showNav ? 'w-0' : 'w-full'}`}>
+        <div className='relative w-[65%] h-screen bg-black/90 flex flex-col gap-7 items-center justify-center shadow-2xl shadow-[#bfbebd]'>
+          <p className="absolute top-5 right-5 w-12 h-12 text-white text-xl font-semibold rounded-full bg-white/20 flex items-center justify-center cursor-pointer hover:scale-110" onClick={() => {setShowNav(false)}}><FontAwesomeIcon icon={faTimes} /></p>
+          { ['Home', 'About Me', 'Education', 'Skills', 'Projects', 'Contact Me'].map((link, index) => (
+            <p className={`relative cursor-pointer text-white font-semibold tracking-[2px] uppercase text-xl pb-1.5 overflow-hidden ${!showNav ? 'hidden' : 'block'} hover:scale-105 myLink`} style={{ fontFamily: "Ysabeau Infant" }} onClick={() => handleMouseScroll(index)}>{link}</p>
+          )) }
         </div>
+        <div className="w-[35%] h-screen bg-gradient-to-r from-black/90 via-90% to-black/40"></div>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div className={`flex gap-10 items-center ${showNavButton ? 'block' : 'hidden'}`}>
+        <p className="fixed w-12 h-12 top-5 left-5 text-white text-xl font-semibold rounded-full bg-white/20 flex items-center justify-center cursor-pointer hover:scale-110" onClick={() => {setShowNav(true)}}>
+          <FontAwesomeIcon icon={faBars} />
+        </p>
       </div>
+      <main id="Hero" className={`w-[100%] h-screen bg-gradient-to-r from-black to-50% to-[#303030] flex items-center pr-[50px] overflow-hidden ${showNav ? 'blur' : ''}`} ref={(ref) => sectionRefs.current[0] = ref}>
+        <div className="pl-[20px] w-[79%] h-screen flex flex-col items-start justify-between pt-[20px]">
+          <div className={`flex items-center gap-8 my-5 pl-[40px] ${!showNavButton ? 'visible' : 'invisible'}`}>
+            { ['Home', 'About Me', 'Education', 'Skills', 'Projects', 'Contact Me'].map((link, index) => (
+              <p key={index} className={`relative cursor-pointer text-white font-semibold tracking-[2px] uppercase text-md pb-1.5 overflow-hidden myLink`} style={{ fontFamily: "Ysabeau Infant" }} onClick={() => handleMouseScroll(index)}>{link}</p>
+            )) }
+          </div>
+          <div className="pl-[40px] w-full py-[80px] flex flex-col items-start justify-end gap-7">
+            <div className="relative">
+              <div className="absolute top-[-5px] left-[-5px] w-2.5 h-2.5 border border-[#000] bg-[#c9c9c9]"></div>
+              <div className="absolute top-[-5px] left-[49%] w-2.5 h-2.5 border border-[#000] bg-[#c9c9c9]"></div>
+              <div className="absolute bottom-[-5px] left-[49%] w-2.5 h-2.5 border border-[#000] bg-[#c9c9c9]"></div>
+              <div className="absolute top-[40%] left-[-5px] w-2.5 h-2.5 border border-[#000] bg-[#c9c9c9]"></div>
+              <div className="absolute bottom-[-5px] left-[-5px] w-2.5 h-2.5 border border-[#000] bg-[#c9c9c9]"></div>
+              <div className="absolute bottom-[-5px] right-[-5px] w-2.5 h-2.5 border border-[#000] bg-[#c9c9c9]"></div>
+              <div className="absolute top-[40%] right-[-5px] w-2.5 h-2.5 border border-[#000] bg-[#c9c9c9]"></div>
+              <div className="absolute top-[-5px] right-[-5px] w-2.5 h-2.5 border border-[#000] bg-[#c9c9c9]"></div>
+              <button className="text-xl bg-white text-[#303030] font-extrabold py-2.5 px-10 tracking-[7px]">PORTFOLIO</button>
+            </div>
+            <p id='name' className={`w-1/3 text-white text-[80px] font-semibold leading-none ${montserrat.className}`}>SUYASH PATALBANSI</p>
+            {/* <p className="text-white text-xl tracking-[9px]">FULL STACK DEVELOPER</p> */}
+            <TypeAnimation
+              sequence={[
+                'FULL STACK DEVELOPER',
+                1000,
+                '',
+                200
+              ]}
+              speed={50}
+              repeat={Infinity}
+              className="text-white text-2xl tracking-[7px]"
+            />
+          </div>
+        </div>
+        <div className="relative w-[18%] h-screen flex items-center">
+          <div className="relative w-full h-[80%] z-40 border-4 border-solid border-white rounded-[150px]">
+            <img 
+              src='/assets/profile.jpg' 
+              alt='ProfilePhoto'
+              className="h-full rounded-[150px] object-cover"
+            />
+          </div>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+          <div className="absolute flex gap-3 items-center justify-center w-full h-screen">
+            <div className={`w-[2px] bg-white h-full mr-[1px]`}></div>
+            <div className={`w-[2px] bg-white h-full mr-[2px]`}></div>
+            <div className={`w-[2px] bg-white h-full mr-[3px]`}></div>
+            <div className={`w-[2px] bg-white h-full mr-[4px]`}></div>
+            <div className={`w-[2px] bg-white h-full`}></div>
+          </div>
+        </div>
+        <div className='w-[5%] flex flex-col gap-5 ml-12'>
+          {[1, 2, 3, 4, 5, 6].map((item, index) => (
+            <div 
+              key={index}
+              className={`cursor-pointer w-4 h-4 rounded-full border ${currentIndex === index ? 'bg-white' : ''}`}
+              onClick={() => handleNavItemClick(index)}
+            >
+            </div>
+          ))}
+        </div>
+      </main>
+      <div className='h-1 bg-white'></div>
+      <main id="AboutMe" className={`w-[100%] h-screen bg-gradient-to-l from-black to-50% to-[#303030] flex items-center pr-[50px] overflow-hidden ${showNav ? 'blur' : ''}`} ref={(ref) => sectionRefs.current[1] = ref}></main>
+      <div className='h-1 bg-white'></div>
+      <main id="AboutMe" className={`w-[100%] h-screen bg-gradient-to-r from-black to-50% to-[#303030] flex items-center pr-[50px] overflow-hidden ${showNav ? 'blur' : ''}`} ref={(ref) => sectionRefs.current[2] = ref}></main>
+      <div className='h-1 bg-white'></div>
+      <main id="AboutMe" className={`w-[100%] h-screen bg-gradient-to-l from-black to-50% to-[#303030] flex items-center pr-[50px] overflow-hidden ${showNav ? 'blur' : ''}`} ref={(ref) => sectionRefs.current[3] = ref}></main>
+      <div className='h-1 bg-white'></div>
+      <main id="AboutMe" className={`w-[100%] h-screen bg-gradient-to-r from-black to-50% to-[#303030] flex items-center pr-[50px] overflow-hidden ${showNav ? 'blur' : ''}`} ref={(ref) => sectionRefs.current[4] = ref}></main>
+      <div className='h-1 bg-white'></div>
+      <main id="AboutMe" className={`w-[100%] h-screen bg-gradient-to-l from-black to-50% to-[#303030] flex items-center pr-[50px] overflow-hidden ${showNav ? 'blur' : ''}`} ref={(ref) => sectionRefs.current[5] = ref}></main>
+      <div className='h-1 bg-white'></div>
+    </>
   );
 }
