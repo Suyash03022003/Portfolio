@@ -15,7 +15,16 @@
     7px 4px 0 #dedede;
 }
 
-.myLink::after {
+#downButton {
+    display: inline-block;
+    -webkit-transform: scale(1.27, 1);
+    -moz-transform: scale(1.27, 1);
+    -o-transform: scale(1.27, 1);
+    transform: scale(1.27, 1);
+}
+
+.myLink::after, 
+.activeNav::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -26,6 +35,11 @@
     opacity: 0;
     transition: opacity 300ms, transform 300ms;
     transform: translate3d(-100%, 0, 0);
+}
+
+.activeNav::after {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
 }
 
 .myLink:hover::after,
