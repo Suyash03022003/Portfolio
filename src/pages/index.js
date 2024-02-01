@@ -136,7 +136,7 @@ export default function Home() {
               <div className="absolute bottom-[-5px] right-[-5px] w-2.5 h-2.5 border border-[#000] bg-[#c9c9c9]"></div>
               <div className="absolute top-[40%] right-[-5px] w-2.5 h-2.5 border border-[#000] bg-[#c9c9c9]"></div>
               <div className="absolute top-[-5px] right-[-5px] w-2.5 h-2.5 border border-[#000] bg-[#c9c9c9]"></div>
-              <button className="text-xl bg-white text-[#303030] font-extrabold py-2.5 px-10 tracking-[7px] z-40">PORTFOLIO</button>
+              <button className="text-xl bg-white text-[#303030] font-extrabold py-2.5 px-10 tracking-[7px] z-40 cursor-crosshair">PORTFOLIO</button>
             </div>
             <p id='name' className={`w-1/3 text-white text-[80px] font-semibold leading-none ${montserrat.className}`}>SUYASH PATALBANSI</p>
             {/* <p className="text-white text-xl tracking-[9px]">FULL STACK DEVELOPER</p> */}
@@ -171,7 +171,7 @@ export default function Home() {
             <div className={`w-[2px] bg-white h-full`}></div>
           </div>
         </div>
-        <div className='fixed w-[5%] flex flex-col items-center gap-5 ml-12 z-50 right-12'>
+        <div className='fixed w-[5%] flex flex-col items-center gap-5 z-50 right-8 opacity-50 hover:opacity-100'>
           {[1, 2, 3, 4, 5, 6].map((item, index) => (
             <div
               key={index}
@@ -228,7 +228,7 @@ export default function Home() {
           </div>
         </div>
       </main>
-      <main id="Skills" className={`w-full min-h-screen bg-gradient-to-r from-[#0d0d0d] to-50% to-[#303030] overflow-hidden ${showNav ? 'blur' : ''} pb-10`} ref={(ref) => sectionRefs.current[2] = ref}>
+      <main id="Skills" className={`w-full bg-gradient-to-r from-[#0d0d0d] to-50% to-[#303030] overflow-hidden ${showNav ? 'blur' : ''} pb-10 mr-[300px]`} ref={(ref) => sectionRefs.current[2] = ref}>
         <div className="w-full flex items-center justify-center gap-5 mt-20">
           <div className='w-1/4 h-0.5 bg-white/80'></div>
           <p className='text-white font-bold text-[35px] tracking-[2px] uppercase' style={mainHeadingStyles}>My Skills</p>
@@ -292,21 +292,27 @@ export default function Home() {
           </div>
         </div>
       </main>
-      <main id="Projects" className={`w-full min-h-screen bg-gradient-to-r from-[#0d0d0d] to-50% to-[#303030] overflow-hidden ${showNav ? 'blur' : ''} pb-10`} ref={(ref) => sectionRefs.current[4] = ref}>
+      <main id="Projects" className={`w-full min-h-screen bg-gradient-to-r from-[#0d0d0d] to-50% to-[#303030] overflow-hidden ${showNav ? 'blur' : ''} pb-10 px-20`} ref={(ref) => sectionRefs.current[4] = ref}>
         <div className="w-full flex items-center justify-center gap-5 mt-20">
           <div className='w-1/4 h-0.5 bg-white/80'></div>
           <p className='text-white font-bold text-[35px] tracking-[2px] uppercase' style={mainHeadingStyles}>Projects</p>
           <div className='w-1/4 h-0.5 bg-white/80'></div>
         </div>
-        <div className='w-4/5 m-auto mt-10 flex items-start text-justify'>
-          <div className='w-1/3 h-[200px] border-2 border-white m-3 rounded-3xl'>
-            <div className='w-full h-96' style={{  }}></div>
+        <div className='full m-auto mt-10 flex flex-wrap items-strech justify-center text-justify gap-[30px]'>
+          <div className='w-[31%] border-2 border-white rounded-3xl cursor-pointer'>
+            {/* <div className='w-full h-48 rounded-t-3xl opacity-80'><img src='../../assets/project1.png' className='rounded-t-3xl w-full h-full object-contain hover:scale-110' /></div> */}
+            <div className='w-full h-52 overflow-hidden opacity-80 rounded-t-3xl'>
+              <div className='w-full h-52 rounded-t-3xl hover:scale-110' style={{ backgroundImage: 'url(../../assets/project1.png)', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover' }}></div>
+            </div>
+            <div className='flex flex-col gap-3 items-center py-4'>
+              <p className='font-semibold text-white/90 text-lg text-center'>Placement Preparation Module</p>
+            </div>
           </div>
-          <div className='w-1/3 h-[200px] border-2 border-white m-3 rounded-3xl'>
-            <div className='w-full h-96' style={{  }}></div>
+          <div className='w-[31%] border-2 border-white rounded-3xl'>
+            <div className='w-full h-48' style={{  }}></div>
           </div>
-          <div className='w-1/3 h-[200px] border-2 border-white m-3 rounded-3xl'>
-            <div className='w-full h-96' style={{  }}></div>
+          <div className='w-[31%] border-2 border-white rounded-3xl'>
+            <div className='w-full h-48' style={{  }}></div>
           </div>
         </div>
       </main>
