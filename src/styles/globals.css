@@ -9,6 +9,11 @@
     box-sizing: border-box;
 }
 
+body {
+    overflow-x: hidden;
+    cursor: none !important;
+}
+
 #name {
     text-shadow: 4px 4px 0px #000, 
     -4px 0 0px #000,
