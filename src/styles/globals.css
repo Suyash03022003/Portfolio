@@ -11,13 +11,16 @@
 
 body {
     overflow-x: hidden;
-    cursor: none !important;
+    /* cursor: none !important; */
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 #name {
-    text-shadow: 4px 4px 0px #000, 
-    -4px 0 0px #000,
-    7px 4px 0 #dedede;
+    text-shadow: 4px 4px 0px #000,
+        -4px 0 0px #000,
+        7px 4px 0 #dedede;
 }
 
 #downButton {
@@ -28,7 +31,7 @@ body {
     transform: scale(1.27, 1);
 }
 
-.myLink::after, 
+.myLink::after,
 .activeNav::after {
     content: '';
     position: absolute;
@@ -51,4 +54,32 @@ body {
 .myLink:focus::after {
     opacity: 1;
     transform: translate3d(0, 0, 0);
+}
+
+@media (max-width: 768px) {
+    #name {
+        text-shadow: 3px 3px 0px #000,
+            -2px 0 0px #000,
+            4px 2px 0 #dedede;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 20px;
+    background-color: #303030;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(217, 217, 217);
+    border-radius: 20px;
+    border: 5px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(155, 155, 155);
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
 }
