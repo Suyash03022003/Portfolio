@@ -1,6 +1,7 @@
 import React from 'react';
 import { AcademicCapIcon } from '@heroicons/react/24/solid'
 import EducationData from './../../data/EducationData';
+import Image from 'next/image'
 
 interface EducationProp {
     mainHeadingStyles: React.CSSProperties;
@@ -32,7 +33,7 @@ const Education: React.FC<EducationProp> = ({ mainHeadingStyles, showNav }) => {
                 }
             </div>
             <div className='w-full flex justify-center items-start px-10 pb-10 pt-20'>
-                <img src='/assets/bit.jpg' alt='' className='w-full md:w-2/3 xl:w-3/5 h-60 object-cover rounded-[10px]' />
+                <Image src='/assets/bit.jpg' alt='' className='w-full md:w-2/3 xl:w-3/5 h-60 object-cover rounded-[10px]' width={1200} height={300} />
             </div>
         </main>
     )
