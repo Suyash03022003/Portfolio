@@ -27,14 +27,14 @@ const About: React.FC<AboutProps> = ({ showNav, mainHeadingStyles }) => {
             <div className='w-1/4 h-0.5 bg-white/80'></div>
           </div>
           <div className='w-3/5 m-auto mt-8 flex flex-col items-start gap-3 text-justify'>
-            <p className='text-[#f1f1f1] text-xl leading-9 tracking-[1px]'>Hello, I'm <span className='font-semibold text-white text-2xl'>Suyash Sunil Patalbansi</span>, a passionate and enthusiastic Full Stack Web Developer. I thrive on crafting engaging and interactive websites and web applications. My journey in the world of web development is fueled by a relentless curiosity to explore new technologies.</p>
+            <p className='text-[#f1f1f1] text-xl leading-9 tracking-[1px]'>Hello, I&apos;m <span className='font-semibold text-white text-2xl'>Suyash Sunil Patalbansi</span>, a passionate and enthusiastic Full Stack Web Developer. I thrive on crafting engaging and interactive websites and web applications. My journey in the world of web development is fueled by a relentless curiosity to explore new technologies.</p>
             <p className='text-[#f1f1f1] text-xl leading-9 tracking-[1px] mt-5'>
               <span className='block font-semibold text-white text-2xl text-center mb-2 tracking-[2px]' style={mainHeadingStyles}>My Interests:</span>
               I am very much interested in taking part in hackathons, helping students in clearing their doubts, and in the free time, listening music! I am always eager to stay on the cutting edge, embrace new technologies and trends in the ever-evolving landscape of web development.
             </p>
             <p className='text-[#f1f1f1] text-xl leading-9 tracking-[1px] mt-5'>
-              <span className='block font-semibold text-white text-2xl text-center mb-2 tracking-[2px]' style={mainHeadingStyles}>Let's Connect:</span>
-              I'm open to collaborations, learning opportunities, and exciting projects. If you share a passion for technology and innovation, I'd love to connect with you!
+              <span className='block font-semibold text-white text-2xl text-center mb-2 tracking-[2px]' style={mainHeadingStyles}>Let&apos;s Connect:</span>
+              I&apos;m open to collaborations, learning opportunities, and exciting projects. If you share a passion for technology and innovation, I&apos;d love to connect with you!
             </p>
             <div className='w-full flex items-center justify-between mt-5'>
               <div className='flex items-center gap-6'>

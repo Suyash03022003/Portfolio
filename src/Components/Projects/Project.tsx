@@ -70,7 +70,7 @@ const Project: React.FC<ProjectProps> = ({ showNav, mainHeadingStyles }) => {
                                         target="__blank"
                                         className="z-[50] px-4 py-2 rounded-xl text-sm font-normal dark:text-white"
                                     >
-                                        Let's View →
+                                        Let&apos;s View →
                                     </CardItem>
                                     <Link href={projectData.githubLink} className=''>
                                         <CardItem

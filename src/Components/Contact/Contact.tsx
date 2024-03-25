@@ -78,7 +78,7 @@ const Contact: React.FC<ContactProps> = ({ mainHeadingStyles, showNav }) => {
                 </div>
             </div>
             <div className='w-full md:w-1/2 px-6 lg:px-0 m-auto mt-14'>
-                <p className='text-gray-200 text-center py-4 text-lg'>Please feel free to share anything you'd like to collaborate on, contribute to, or connect with me about. Don't hesitate to submit the form below!</p>
+                <p className='text-gray-200 text-center py-4 text-lg'>Please feel free to share anything you&apos;d like to collaborate on, contribute to, or connect with me about. Don&apos;t hesitate to submit the form below!</p>
                 <form onSubmit={handleSubmit} className='space-y-3 pt-6'>
                     <div>
                         <input
