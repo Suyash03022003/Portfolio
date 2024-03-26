@@ -62,17 +62,12 @@ const Project: React.FC<ProjectProps> = ({ showNav, mainHeadingStyles }) => {
                                         alt="thumbnail"
                                     />
                                 </CardItem>
-                                <div className="flex justify-between items-center mt-10">
-                                    <CardItem
-                                        translateZ={20}
-                                        as={Link}
-                                        href={projectData.link}
+                                <div className="flex flex-row-reverse justify-between items-center mt-10">
+                                    <Link 
+                                        href={projectData.githubLink} 
                                         target="__blank"
-                                        className="z-[50] px-4 py-2 rounded-xl text-sm font-normal dark:text-white"
+                                        className=''
                                     >
-                                        Let&apos;s View →
-                                    </CardItem>
-                                    <Link href={projectData.githubLink} className=''>
                                         <CardItem
                                             translateZ={20}
                                             as="button"
@@ -81,21 +76,38 @@ const Project: React.FC<ProjectProps> = ({ showNav, mainHeadingStyles }) => {
                                             <FontAwesomeIcon icon={faGithub} className="text-white text-xl" /> <span>Github</span>
                                         </CardItem>
                                     </Link>
+                                    { projectData.link &&
+                                        <CardItem
+                                            translateZ={20}
+                                            as={Link}
+                                            href={projectData.link}
+                                            target="__blank"
+                                            className="z-[50] px-4 py-2 rounded-xl text-sm font-normal dark:text-white"
+                                        >
+                                            Let&apos;s View →
+                                        </CardItem>
+                                    }
                                 </div>
                             </CardBody>
                         </CardContainer>
                     ))}
                 </div>
-                <p 
-                    className='text-gray-300 cursor-pointer'
-                    onClick={changeNumberOfProjects}
-                >
-                    {
-                        numberOfProjects === 4 ? 
-                        'View More...' : 
-                        'View Less...'
-                    }
-                </p>
+                {
+                    numberOfProjects === 4 ? 
+                    <p 
+                        className='text-gray-300 cursor-pointer'
+                        onClick={changeNumberOfProjects}
+                    >
+                            View More...
+                    </p> :
+                    <Link 
+                        href='https://github.com/Suyash03022003' 
+                        className='text-gray-300 cursor-pointer'
+                        target='__blank'
+                    >
+                        View More...
+                    </Link>
+                }
             </div>
         </main>
     )
