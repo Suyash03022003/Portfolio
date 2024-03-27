@@ -60,63 +60,63 @@ const SkillsData = [
         name: 'React.js',
         type: 'Front-End Technologies',
         image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png',
-        designation: '<h1>Hello</h1>'
+        designation: 'Component-based UI'
     },
     {
         id: 10,
         name: 'Next.js',
         type: 'Front-End Technologies',
         image: 'https://cdn.worldvectorlogo.com/logos/next-js.svg',
-        designation: '<h1>Hello</h1>'
+        designation: 'Server-side rendering'
     },
     {
         id: 11,
         name: 'JQuery',
         type: 'Front-End Technologies',
         image: 'https://cdn.worldvectorlogo.com/logos/jquery-4.svg',
-        designation: '<h1>Hello</h1>'
+        designation: 'DOM manipulation'
     },
     {
         id: 12,
         name: 'Tailwind CSS',
         type: 'Front-End Technologies',
         image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTX9fZzRj7BuQAtuf6RSuqIjWEaai2Vl7sFq2Y6tKq5hA&s',
-        designation: '<h1>Hello</h1>'
+        designation: 'Utility-first styling'
     },
     {
         id: 13,
         name: 'SASS',
         type: 'Front-End Technologies',
         image: 'https://sass-lang.com/assets/img/styleguide/seal-color.png',
-        designation: '<h1>Hello</h1>'
+        designation: 'CSS preprocessor'
     },
     {
         id: 14,
         name: 'Bootstrap',
         type: 'Front-End Technologies',
         image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/800px-Bootstrap_logo.svg.png',
-        designation: '<h1>Hello</h1>'
+        designation: 'Responsive framework'
     },
     {
         id: 15,
         name: 'Redux',
         type: 'Front-End Technologies',
         image: 'https://raw.githubusercontent.com/reduxjs/redux/master/logo/logo.png',
-        designation: '<h1>Hello</h1>'
+        designation: 'State management'
     },
     {
         id: 16,
         name: 'Node.js',
         type: 'Back-End Technologies',
         image: 'https://static-00.iconduck.com/assets.00/node-js-icon-454x512-nztofx17.png',
-        designation: 'console.log("Hello")'
+        designation: 'JavaScript Runtime'
     },
     {
         id: 17,
         name: 'Express.js',
         type: 'Back-End Technologies',
         image: 'https://w7.pngwing.com/pngs/925/447/png-transparent-express-js-node-js-javascript-mongodb-node-js-text-trademark-logo.png',
-        designation: 'console.log("Hello")'
+        designation: 'Server-side JavaScript'
     },
     {
         id: 18,
@@ -130,7 +130,7 @@ const SkillsData = [
         name: 'MongoDB',
         type: 'Databases',
         image: 'https://1000logos.net/wp-content/uploads/2020/08/MongoDB-Emblem.jpg',
-        designation: 'db.collection.insertOne({"hello": "world"})'
+        designation: 'db.collection.insertOne({"hello"})'
     },
     {
         id: 20,
